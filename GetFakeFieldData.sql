@@ -1,3 +1,5 @@
+USE IrisLawBusiness
+GO
 
 DECLARE @FieldDisplayName varchar(500)
 SET @FieldDisplayName = 'Earner Name'
@@ -19,8 +21,8 @@ select
 		/* fieldOrder */ CAST(0 /*dd.DataDictionaryFieldOrder */ as varchar(50)) + ', ' + 
 		/* usingRoles */ CAST(dd.DataDictionaryUsingRoles as varchar(50)) + ', ' + 
 		/* isStorable */ CAST(0 /*dd.DataDictionaryIsStorable*/ as varchar(50)) + ', "' + 
-		/* dictionaryFunction */ dd.DataDictionaryFunction + '", "' + 
-		/* dataDictionaryArgs */ dd.DataDictionaryArgs +  '")
+		/* dictionaryFunction */ COALESCE(dd.DataDictionaryFunction, '') + '", "' + 
+		/* dataDictionaryArgs */ COALESCE(dd.DataDictionaryArgs, '') +  '")
 }
 		'
 
